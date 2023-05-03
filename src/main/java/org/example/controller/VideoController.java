@@ -21,8 +21,8 @@ public class VideoController {
         this.videoService = videoService;
     }
 
-    @GetMapping(value = "/video/{id}")
-    public List<VideoContentDTO> getVideo (@PathVariable Long id) {
+    @GetMapping(value = "/video")
+    public List<VideoContentDTO> getVideo() {
         return videoService.findAll();
     }
 
@@ -37,7 +37,7 @@ public class VideoController {
         return new ResponseEntity<>(videoService.update(id, contentDTO), HttpStatus.OK);
     }
     @PostMapping(value = "/video", consumes = "application/json")
-    public ResponseEntity<VideoContentDTO> saveTexts(@RequestBody VideoContentDTO textsDTO) {
-        return new ResponseEntity<>(videoService.save(textsDTO), HttpStatus.CREATED);
+    public ResponseEntity<VideoContentDTO> save(@RequestBody VideoContentDTO videoDTO) {
+        return new ResponseEntity<>(videoService.save(videoDTO), HttpStatus.CREATED);
     }
 }
